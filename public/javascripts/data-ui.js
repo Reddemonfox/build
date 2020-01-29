@@ -42,7 +42,7 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
                 odkmaker.application.newForm();
             else
                 odkmaker.application.confirm('Are you sure? You will lose unsaved changes to the current form.', odkmaker.application.newForm);
-                
+
         });
         $('.menu .saveLink').click(function(event)
         {
@@ -269,7 +269,7 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
             var target = $('.aggregateInstanceName').val();
             $loading.show();
             $('.aggregateDialog .errorMessage').empty().hide();
-
+            console.log({ protocol: protocol, target: target, credentials: { user: $('#aggregateUser').val(), password: $('#aggregatePassword').val() }, name: $('h1').text(), payload: odkmaker.data.serialize() });
             $.ajax({
                 url: '/aggregate/post',
                 dataType: 'json',
