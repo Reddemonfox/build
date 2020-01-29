@@ -260,17 +260,21 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
             $form.submit();
         });
 
-        $('.aggregateDialog .aggregateExportButton').click(function(event)
+        $('#uploadAggregateButton').click(function(event)
         {
             event.preventDefault();
 
             var $loading = $('.aggregateDialog .modalLoadingOverlay');
-            var protocol = $('.aggregateInstanceProtocol').val();
-            var target = $('.aggregateInstanceName').val();
+            // var protocol = $('.aggregateInstanceProtocol').val();
+            var user = 'administrator';
+            // var target = $('.aggregateInstanceName').val();
+            var passowrd = 'aggregate';
+            var target = 'aggregate.thecodewolves.com';
+            var protocol = 'http';
             $loading.show();
             $('.aggregateDialog .errorMessage').empty().hide();
             alert('here');
-            console.log({ protocol: protocol, target: target, credentials: { user: $('#aggregateUser').val(), password: $('#aggregatePassword').val() }, name: $('h1').text(), payload: odkmaker.data.serialize() });
+            console.log({ protocol: protocol, target: target, credentials: { user: user, password: passowrd }, name: $('h1').text(), payload: odkmaker.data.serialize() });
             $.ajax({
                 url: '/aggregate/post',
                 dataType: 'json',
