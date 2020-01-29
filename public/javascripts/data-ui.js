@@ -274,7 +274,6 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
             $loading.show();
             // $.toast('Uploading to Aggregate');
             $('.aggregateDialog .errorMessage').empty().hide();
-            console.log({ protocol: protocol, target: target, credentials: { user: user, password: passowrd }, name: $('h1').text(), payload: odkmaker.data.serialize() });
             $.ajax({
                 url: '/aggregate/post',
                 dataType: 'json',
