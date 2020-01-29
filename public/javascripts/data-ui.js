@@ -272,7 +272,7 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
             var target = 'aggregate.thecodewolves.com';
             var protocol = 'http';
             $loading.show();
-            $.toast('Uploading to Aggregate');
+            // $.toast('Uploading to Aggregate');
             $('.aggregateDialog .errorMessage').empty().hide();
             console.log({ protocol: protocol, target: target, credentials: { user: user, password: passowrd }, name: $('h1').text(), payload: odkmaker.data.serialize() });
             $.ajax({
@@ -282,7 +282,8 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
                 data: { protocol: protocol, target: target, credentials: { user: user, password: passowrd }, name: $('h1').text(), payload: odkmaker.data.serialize() },
                 success: function(response, status)
                 {
-                    $.toast('Your form has been successfully uploaded to ' + $.h(target) + '.');
+                    alert('Your form has been successfully uploaded');
+                    // $.toast('Your form has been successfully uploaded to ' + $.h(target) + '.');
                     // $('.aggregateDialog').jqmHide();
                 },
                 error: function(xhr, status, error)
@@ -303,7 +304,8 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
                     //     .append(message)
                     //     .slideDown();
 
-                    $.toast(message);
+                    alert(message);
+                    // $.toast(message);
                 },
                 complete: function() { $loading.hide(); }
             });
