@@ -272,18 +272,18 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
             var target = 'aggregate.thecodewolves.com';
             var protocol = 'http';
             $loading.show();
+            $.toast('Uploading to Aggregate');
             $('.aggregateDialog .errorMessage').empty().hide();
-            alert('here');
             console.log({ protocol: protocol, target: target, credentials: { user: user, password: passowrd }, name: $('h1').text(), payload: odkmaker.data.serialize() });
             $.ajax({
                 url: '/aggregate/post',
                 dataType: 'json',
                 type: 'POST',
-                data: { protocol: protocol, target: target, credentials: { user: $('#aggregateUser').val(), password: $('#aggregatePassword').val() }, name: $('h1').text(), payload: odkmaker.data.serialize() },
+                data: { protocol: protocol, target: target, credentials: { user: user, password: passowrd }, name: $('h1').text(), payload: odkmaker.data.serialize() },
                 success: function(response, status)
                 {
                     $.toast('Your form has been successfully uploaded to ' + $.h(target) + '.');
-                    $('.aggregateDialog').jqmHide();
+                    // $('.aggregateDialog').jqmHide();
                 },
                 error: function(xhr, status, error)
                 {
@@ -297,11 +297,13 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
                         message = '<p>Could not upload the form. We found the server you specified, but it does not appear to be a valid, functioning Aggregate server. Please check the address and the server, and try again.</p>';
                     else
                         message = '<p>Could not upload the form. Please check your credentials and instance name, and try again.</p>';
+                    //
+                    // $('.aggregateDialog .errorMessage')
+                    //     .empty()
+                    //     .append(message)
+                    //     .slideDown();
 
-                    $('.aggregateDialog .errorMessage')
-                        .empty()
-                        .append(message)
-                        .slideDown();
+                    $.toast(message);
                 },
                 complete: function() { $loading.hide(); }
             });
