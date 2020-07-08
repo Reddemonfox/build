@@ -269,7 +269,7 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
             var user = 'administrator';
             // var target = $('.aggregateInstanceName').val();
             var passowrd = 'aggregate';
-            var target = 'aggregate.thecodewolves.com';
+            var target = 'aggregate4.thecodewolves.com';
             var protocol = 'http';
             $loading.show();
             // $.toast('Uploading to Aggregate');
